@@ -135,18 +135,23 @@
         myScoreResult.textContent = `${myScore}`;
         comScoreResult.textContent = `${comScore}`;
         whoWon();
+
         comChoose(computerSelection);
       }
 
       function whoWon() {
         if (myScore === 5) {
           ps.forEach((btns) => btns.removeEventListener("click", clickPlay));
-          alert(
-            "NE MI SE IGRA GLUPAVA IGRA PAK U ZIVOT press F5 to pay respects"
-          );
+          setTimeout(function () {
+            alert(
+              "NE MI SE IGRA GLUPAVA IGRA PAK U ZIVOT press F5 to pay respects"
+            );
+          }, 10);
         } else if (comScore === 5) {
           ps.forEach((btns) => btns.removeEventListener("click", clickPlay));
-          alert("OFICIJALNO SI PEDER press F5 to try again");
+          setTimeout(function () {
+            alert("OFICIJALNO SI PEDER press f5 to try again");
+          }, 10);
         } else {
           return;
         }
