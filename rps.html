@@ -1,15 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="rps.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap"
+      rel="stylesheet"
+    />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
+    <div class="grid">
+      <div class="pince">
+        <img src="pincika2.png" id="pin" />
+      </div>
+      <div class="text-container">
+        <h1>PINCIKA HAS CHALLENGED YOU TO ROCK, PAPER, SCISSORS!!!</h1>
+        <h2>IF YOU DECLINE YOU WILL BE BRANDED "PEDER"</h2>
+        <h3>NOW CHOOSE ONE :</h3>
+      </div>
+      <div class="button-container">
+        <div style="margin-left: 20px; margin-right: 20px"></div>
+        <div class="buttons">
+          <input
+            type="image"
+            src="rock.png"
+            class="btns"
+            id="rocky"
+            alt="rock"
+            value="rock"
+          />
+        </div>
+        <div class="buttons">
+          <input
+            type="image"
+            src="paper.png"
+            class="btns"
+            id="papy"
+            alt="paper"
+            value="paper"
+          />
+        </div>
+        <div class="buttons">
+          <input
+            type="image"
+            src="scissors.png"
+            class="btns"
+            id="scissy"
+            alt="scissors"
+            value="scissors"
+          />
+        </div>
+        <div style="margin-left: 20px; margin-right: 20px"></div>
+      </div>
+      <div class="rezlutati">
+        <h4 id="rezl"></h4>
+      </div>
+      <div class="scores">
+        <div class="myscore">
+          <h4 style="margin-bottom: 10px">YOUR SUBHUMAN SCORE</h4>
+          <p id="myscore1"></p>
+        </div>
+        <div id="comchoose"></div>
+        <div class="comscore">
+          <h4 style="margin-bottom: 10px">THE GOD PINCIKA SCORE</h4>
+          <p id="myscore2"></p>
+        </div>
+      </div>
+    </div>
+
     <script>
-      let game = ["Rock", "Paper", "Scissors"];
-      let computerSelection = computerPlay();
+      let game = ["rock", "paper", "scissors"];
+
+      let ps = document.querySelectorAll(".btns");
+      ps.forEach((btns) => btns.addEventListener("click", clickPlay));
+
+      function clickPlay(e) {
+        oneRound(e.target.value, computerPlay());
+      }
 
       let myScore = 0;
       let comScore = 0;
@@ -18,83 +90,88 @@
         let randomElement = game[Math.floor(Math.random() * game.length)];
         return randomElement;
       }
-      let playerSelection = prompt;
-      function oneRound(computerSelection, playerSelection) {
-        playerSelection = playerSelection.toLowerCase();
-        computerSelection = computerSelection.toLowerCase();
+
+      function oneRound(playerSelection) {
+        const result = document.querySelector("#rezl");
+        let computerSelection = computerPlay();
 
         if (computerSelection == "rock" && playerSelection == "paper") {
           myScore++;
-          return "You win paper beats rock.";
+          result.textContent = "ABE OVOJ SMURFA.";
         } else if (
           computerSelection == "rock" &&
           playerSelection == "scissors"
         ) {
           comScore++;
-          return "You lose rock beats scissors";
+          result.textContent = "NE TE BIVA NI ZA IRON";
         } else if (computerSelection == "paper" && playerSelection == "rock") {
           comScore++;
-          return "You lose paper beats rock.";
+          result.textContent = "DAME DONESI MI SOK OVOJ NEZNAE DA IGRA.";
         } else if (
           computerSelection == "paper" &&
           playerSelection == "scissors"
         ) {
           myScore++;
-          return "You win scissors beat paper";
+          result.textContent = "EBAN RUSIN FAMILIJATA DA TI GORI.";
         } else if (
           computerSelection == "scissors" &&
           playerSelection == "paper"
         ) {
           comScore++;
-          return "You lose scissors beat paper.";
+          result.textContent = "SHTO OCEKUVASH OD BAD PLAYER.";
         } else if (computerSelection == playerSelection) {
-          return "Its a tie";
+          result.textContent = "PECO DA POGODESHE ULTI KJE TEPAV";
         } else if (
           computerSelection == "scissors" &&
           playerSelection == "rock"
         ) {
           myScore++;
-          return "You win rock beats scissors";
+          result.textContent = "NE SUM U FORMA NEMAM IGRANO ODAMNA";
         } else {
           return "error";
         }
+        const myScoreResult = document.querySelector("#myscore1");
+        const comScoreResult = document.querySelector("#myscore2");
+        myScoreResult.textContent = `${myScore}`;
+        comScoreResult.textContent = `${comScore}`;
+        whoWon();
+        comChoose(computerSelection);
       }
 
       function whoWon() {
-        if (myScore > comScore) {
-          console.log("Congratulations You Won");
-        } else if (comScore > myScore) {
-          console.log("Too Bad You Lose");
+        if (myScore === 5) {
+          ps.forEach((btns) => btns.removeEventListener("click", clickPlay));
+          alert(
+            "NE MI SE IGRA GLUPAVA IGRA PAK U ZIVOT press F5 to pay respects"
+          );
+        } else if (comScore === 5) {
+          ps.forEach((btns) => btns.removeEventListener("click", clickPlay));
+          alert("OFICIJALNO SI PEDER press F5 to try again");
         } else {
-          console.log("Its a tie");
+          return;
         }
       }
 
-      function gamer() {
-        console.log("round 1");
-        playerSelection = prompt("Choose something");
-        console.log(oneRound(computerSelection, playerSelection));
-        console.log(myScore + " " + comScore);
-        console.log("round 2");
-        playerSelection = prompt("Choose something");
-        console.log(oneRound(computerSelection, playerSelection));
-        console.log(myScore + " - " + comScore);
-        console.log("round 3");
-        playerSelection = prompt("Choose something");
-        console.log(oneRound(computerSelection, playerSelection));
-        console.log(myScore + " " + comScore);
-        console.log("round 4");
-        playerSelection = prompt("Choose something");
-        console.log(oneRound(computerSelection, playerSelection));
-        console.log(myScore + " " + comScore);
-        console.log("round 5");
-        playerSelection = prompt("Choose something");
-        console.log(oneRound(computerSelection, playerSelection));
-        console.log(myScore + " " + comScore);
-        console.log(whoWon());
+      function comChoose(computerSelection) {
+        const comShow = document.querySelector("#comchoose");
+        comShow.className = "";
+        comShow.classList.toggle(computerSelection);
       }
 
-      gamer();
+      /*
+      function getPlayerChoice(e) {
+  let playerSelection= (e.target.id);
+  
+  playRound(playerSelection, computerPlay());
+}
+
+function clickHandler(e) {
+        const button = e.target;
+        
+
+        return(playerSelection = button.value);
+      }
+*/
     </script>
   </body>
 </html>

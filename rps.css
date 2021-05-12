@@ -1,0 +1,137 @@
+#pin {
+  width: 600px;
+  height: 300px;
+}
+#rocky,
+#papy,
+#scissy {
+  width: 150px;
+  height: 150px;
+}
+p {
+  color: white;
+}
+
+body {
+  background-color: black;
+  background-image: url(dio.png), url(jotaro.png);
+  background-repeat: no-repeat;
+  background-position: left, right;
+  background-size: 400px, 400px;
+  font-family: "Spicy Rice";
+}
+h1,
+h2,
+h3,
+h4 {
+  color: white;
+  font-size: 20px;
+}
+.myscore {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 215px;
+}
+#myscore1 {
+  text-align: center;
+  background: yellow;
+  width: 150px;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+}
+.comscore {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 215px;
+}
+#myscore2 {
+  text-align: center;
+  background: violet;
+  width: 150px;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+}
+
+p {
+  font-size: 80px;
+}
+.grid {
+  display: grid;
+  grid-template-rows: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 20px;
+}
+
+#rocky:hover,
+#papy:hover,
+#scissy:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px limegreen;
+}
+
+.rock {
+  width: 215px;
+  height: 170px;
+
+  background-image: url(rock.png);
+  background-repeat: no-repeat;
+  background-size: 150px;
+  background-position: center;
+}
+.paper {
+  width: 215px;
+  height: 170px;
+
+  background-image: url(paper.png);
+  background-repeat: no-repeat;
+  background-size: 150px;
+  background-position: center;
+}
+.scissors {
+  width: 215px;
+  height: 170px;
+
+  background-image: url(scissors.png);
+  background-repeat: no-repeat;
+  background-size: 150px;
+  background-position: center;
+}
+
+.text-container {
+  line-height: 30px;
+}
+.pince {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.text-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.rezlutati {
+  display: flex;
+  justify-content: center;
+}
+.results {
+  background-color: gray;
+}
+
+.scores {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
